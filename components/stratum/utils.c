@@ -224,6 +224,8 @@ void midstate_sha256_bin(const uint8_t *data, const size_t data_len, uint8_t *de
     // memcpy(dest, midstate.state, 32);
 #ifdef CONFIG_MBEDTLS_HARDWARE_SHA
      flip32bytes(dest, midstate.state);
+#else
+     memcpy(dest, midstate.MBEDTLS_PRIVATE(state), 32);
 #endif
 
 }
